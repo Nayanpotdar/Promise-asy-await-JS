@@ -1,0 +1,13 @@
+body{
+    background-color: darkgrey;
+}
+h1{
+    text-align: center;
+    color: crimson;
+}
+pre{
+    color: rgba(41, 41, 224, 0.788);
+}
+p{
+    color: rgb(197, 39, 39);
+}

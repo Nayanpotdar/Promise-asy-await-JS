@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise asy await</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Promise Async Await</h1>
+    <br>
+    <hr>
+    <h2>Q1 Write one example explaining how you can write a callback function.</h2>
+    <br>
+    <pre>// Callback Function Example
+        function greet(name, myFunction) {
+            console.log('Hello Prepbytes');
+        
+            // callback function
+            // executed only after the greet() is executed
+            myFunction(name);
+        }
+        
+        // callback function
+        function sayName(name) {
+            console.log('Hello' + ' ' + name);
+        }
+        
+        // calling the function after 2 seconds
+        setTimeout(greet, 2000, 'Nayan', sayName);</pre>
+
+    <br>
+
+    <p><b>Ans <br>
+            Hello Prepbytes
+            <br>
+            Hello Nayan</b>
+    </p>
+    <hr>
+
+    <br>
+
+    <h2>Q2 Write a callback function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be
+        printed after 2 sec, 3 should be printed after 3 sec, and so on.
+        <br>
+        Explain callback hell.
+        <br>
+        Numbers
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+    </h2>
+    <br>
+    <pre>
+            setTimeout(()=>{
+                console.log("1");
+                setTimeout(()=>{
+                    console.log("2");
+                    setTimeout(()=>{
+                        setTimeout(()=>{
+                            console.log("4");
+                            setTimeout(()=>{
+                                console.log("5");
+                                setTimeout(()=>{
+                                    console.log("6");
+                                    setTimeout(()=>{
+                                        console.log("7");
+                                    },7000)
+                                },6000)
+                            },5000)
+                        },4000)
+                    },3000)
+                },2000)
+            },1000)                  
+            
+        </pre>
+    <hr>
+
+    <h2>Q3 Write the promise function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should
+        be printed after 2 sec, 3 should be printed after 3 sec, and so on.
+        <br>
+        Numbers
+        <br>
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+    </h2>
+    <br>
+    <hr>
+
+    <h2>Q4 Create a promise function accepting an argument, if yes is passed to the function then it should go to
+        resolved state and print Promise Resolved, and if nothing is passed
+        then it should go to reject the state and catch the error and print Promise Rejected</h2>
+        <br>
+        <pre><b>async function exampleWithAsyncAwait() {
+            try {
+              const result1 = await promiseFunction('yes');
+              console.log(result1); // Promise Resolved
+          
+              const result2 = await promiseFunction();
+              console.log(result2); // This will not be reached because it rejects
+            } catch (error) {
+              console.error(error.message); // Promise Rejected
+            }
+          }
+          
+          exampleWithAsyncAwait();</b></pre>
+          <br>
+          <P><b>Ans 
+            <br>
+            promiseFunction is not defined</b>
+          </P>
+          <br>
+          <hr>
+
+          <h2>Q5 Create examples to explain callback function</h2>
+          <br>
+          <pre>function doSomethingAsync(callback) {
+            setTimeout(() => {
+              console.log("Async operation completed.");
+              callback();
+            }, 2000); // Simulating an asynchronous operation with a delay of 2 seconds
+          }
+          
+          function callbackFunction() {
+            console.log("Callback function executed!");
+          }
+          
+          doSomethingAsync(callbackFunction);</pre>
+          <br>
+          <p><b>Ans
+            <br> 
+             Async operation completed.
+             <br>
+            Callback function executed!</b></p>
+            <br>
+            <hr>
+
+            <h2>Q6 Create examples to explain callback hell function</h2>
+            <br>
+            <pre>function asyncOperation1(callback) {
+                setTimeout(() => {
+                  console.log("Async operation 1 completed.");
+                  callback();
+                }, 1000);
+              }
+              
+              function asyncOperation2(callback) {
+                setTimeout(() => {
+                  console.log("Async operation 2 completed.");
+                  callback();
+                }, 1500);
+              }
+              // Callback Hell (Nested Callbacks)
+                 asyncOperation1(() => {
+                asyncOperation2(() => {
+
+                    console.log("All async operations completed.");
+                });
+              });
+            </pre>
+            <br>
+            <p><b>Ans
+                <br>
+                Async operation 1 completed.
+                <br>
+                Async operation 2 completed.
+                <br>
+                All async operations completed</b></p>
+                <br>
+                <hr>
+
+                <h2>Q7 	Create examples to explain promises function</h2>
+                <br>
+                <pre>function asyncOperation() {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const randomValue = Math.random();
+                        if (randomValue >= 0.5) {
+                          resolve(randomValue);
+                        } else {
+                          reject(new Error('Random value is less than 0.5'));
+                        }
+                      }, 1000);
+                    });
+                  }
+                  
+                  asyncOperation()
+                    .then((result) => console.log('Resolved:', result))
+                    .catch((error) => console.error('Rejected:', error.message));</pre>
+                    <br>
+                    <p><b>Ans 
+                        <br>
+                        Rejected: Random value is less than 0.5
+                    </b></p>
+                    <br>
+                    <hr>
+
+                    <h2>Q8 Create examples to explain async await function</h2>
+                    <br>
+                    <pre>async function executeAsyncOperation() {
+                        try {
+                          const results = await Promise.all([asyncOperation(), asyncOperation(), asyncOperation()]);
+                          console.log('Resolved:', results);
+                        } catch (error) {
+                          console.error('Rejected:', error.message);
+                        }
+                      }
+                      
+                      executeAsyncOperation();</pre>
+                      <br>
+                      <p><b>Ans 
+                        <br>
+                        Rejected: asyncOperation is not defined</b></p>
+                        <br>
+                        <hr>
+
+                        <h2>Q9 Create examples to explain promise.all function</h2>
+                        <br>
+                        <pre>function asyncOperation1() {
+                            return new Promise((resolve) => {
+                              setTimeout(() => {
+                                resolve('Result from asyncOperation1');
+                              }, 2000);
+                            });
+                          }
+                          
+                          function asyncOperation2() {
+                            return new Promise((resolve) => {
+                              setTimeout(() => {
+                                resolve('Result from asyncOperation2');
+                              }, 1500);
+                            });
+                          }
+                          async function executeAsyncOperations() {
+                            try {
+                              const results = await Promise.all([asyncOperation1(), asyncOperation2()]);
+                              console.log('All results:', results);
+                            } catch (error) {
+                              console.error('Error occurred:', error.message);
+                            }
+                          }
+                          
+                          executeAsyncOperations();</pre>
+                          <br>
+                          <p><b>Ans 
+                            <br>
+                            All results: [ 'Result from asyncOperation1', 'Result from asyncOperation2' ]</b></p>
+                            <br>
+                            <hr>
+
+
+</body>
+
+</html>
